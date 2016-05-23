@@ -20,7 +20,7 @@ void printError(void)
 		return;
 	}
 
-	fputs((char *)lpMsgBuf, stderr);
+	fprintf(stderr, "%ls\n", (LPTSTR)lpMsgBuf);
 	LocalFree(lpMsgBuf);
 }
 
@@ -57,15 +57,17 @@ int main(VOID)
 
 		printf("%02x ", ir.Event.KeyEvent.wVirtualScanCode);
 
-		if (GetKeyNameText(ir.Event.KeyEvent.wVirtualScanCode << 16,
-		                   lpString,
-		                   128) == 0) {
+		if (GetKeyNameText(
+			ir.Event.KeyEvent.wVirtualScanCode << 16,
+			lpString,
+			128
+		) == 0) {
 			SetConsoleMode(hStdin, fdwSaveOldMode);
 			printError();
 			return 1;
 		}
 
-		printf("%ws\n", lpString);
+		printf("%ls\n", lpString);
 	}
 
 	if (SetConsoleMode(hStdin, fdwSaveOldMode) == 0) {
