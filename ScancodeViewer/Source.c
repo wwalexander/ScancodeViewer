@@ -51,7 +51,15 @@ int main(VOID)
 	while (ReadConsoleInput(hStdin, &ir, 1, &cNumRead) != 0) {
 		TCHAR lpString[128];
 
+		if (cNumRead < 1) {
+			continue;
+		}
+
 		if (ir.EventType != KEY_EVENT) {
+			continue;
+		}
+
+		if (ir.Event.KeyEvent.bKeyDown == FALSE) {
 			continue;
 		}
 
