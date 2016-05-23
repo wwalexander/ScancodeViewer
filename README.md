@@ -10,7 +10,7 @@ terminated by pressing Ctrl-C.
 
 For instance, if a user wished to remap Caps Lock (scancode 0x3a) to Esc
 (scancode 0x01), they would set
-`HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Keyboard Layout\\Scancode
+`HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Keyboard Layout\Scancode
 Map` to
 
     00 00 00 00 (Version Information)
